@@ -40,3 +40,6 @@ if __name__ == "__main__":
     query = sys.argv[1]
     w = wolfram(appid)
     w.search(query)
+    
+
+# http://community.wolfram.com/groups/-/m/t/228183
