@@ -3,7 +3,6 @@
 import urllib2
 import urllib
 import httplib
-import sys
 from xml.etree import ElementTree as etree
 import smtplib
 
