@@ -1,3 +1,5 @@
+''' This script will send a mail to the client when Google reaches their revenue to $300b. '''
+
 import urllib2
 import urllib
 import httplib
@@ -7,7 +9,8 @@ import smtplib
 
 
 class wolfram(object):
-    def __init__(self, appid):
+
+    def __init__(self, appid): 
         self.appid = appid
         self.base_url = 'http://api.wolframalpha.com/v2/query?'
         self.headers = {'User-Agent': None}
@@ -34,12 +37,10 @@ class wolfram(object):
 
     
     def search(self, ip):
+        # This function will query about Google's revenue using WolframAlpha API
         xml = self._get_xml(ip)
         result_dics = self._xmlparser(xml)
-
-        #print 'Available Titles' , '\n'
         titles = result_dics.keys()
-        #for ele in titles :
         Res = result_dics['Result']
         Res_Split = Res.split('.')
         arg_1 = Res_Split[0]
@@ -54,10 +55,10 @@ class wolfram(object):
 
    
     def send_mails(self):
-        gmail_user = "navomails@gmail.com"
-        gmail_pwd = "zacdxs@123"
-        FROM = 'navomails@gmail.com'
-        TO = ['navomails@gmail.com, navodissa@yahoo.com'] #must be a list
+        gmail_user = "test@test.com"
+        gmail_pwd = "test@123"
+        FROM = 'test@test.com'
+        TO = ['test1@test.com'] #must be a list
         SUBJECT = "Google has reached it's revenue to $300b"
         TEXT = "Hi,\n\nThis is to inform you that Google has reached it's revenue to $300b.\n \nRegards,\nAutomatic Mail Sender."
 
@@ -66,16 +67,16 @@ class wolfram(object):
         """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
         try:
             #server = smtplib.SMTP(SERVER) 
-            server = smtplib.SMTP("smtp.gmail.com", 587) #or port 465 doesn't seem to work!
+            server = smtplib.SMTP("smtp.test.com", 25) 
             server.ehlo()
             server.starttls()
-            server.login(gmail_user, gmail_pwd)
+            server.login(user_name, password)
             server.sendmail(FROM, TO, message)
                 #server.quit()
             server.close()
             print 'Google has reached their revenue to $300b.\nSuccessfully sent the mail'
         except:
-            print "failed to send mail"
+            print "Failed to send mail"
 
 
 if __name__ == "__main__":
@@ -86,4 +87,4 @@ if __name__ == "__main__":
     w.search(query)
     
 
-# http://community.wolfram.com/groups/-/m/t/228183
+
