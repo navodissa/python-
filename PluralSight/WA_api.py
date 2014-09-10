@@ -2,8 +2,6 @@ import urllib
 import wolframalpha
 import urllib2
 from xml.etree import ElementTree as etree
-import sys
-import smtplib
 
 
 class wolfram(object):
