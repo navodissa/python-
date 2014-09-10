@@ -79,6 +79,7 @@ class wolfram(object):
 
 
 if __name__ == "__main__":
+    schedule = "0 0 * * *"
     appid = 'T8WRWQ-7X2GVQ6Y3V'
     query = sys.argv[1]
     w = wolfram(appid)
