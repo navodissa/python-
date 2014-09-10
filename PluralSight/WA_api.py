@@ -9,9 +9,9 @@ class wolfram(object):
     def __init__(self, appid):
         self.appid = appid
 
-    def search(self, res):
+    def search(self, resp):
         client = wolframalpha.Client(self.appid)
-        res = client.query(res)
+        res = client.query(resp)
         if len(res.pods) > 0:
             texts = ""
             pod = res.pods[1]
